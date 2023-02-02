@@ -2,33 +2,17 @@ package entities.abstracts;
 
 public abstract class Users {
 
-    private String ad;
-    private String soyAd;
     private String id;
+    private String FirstName;
+    private String LastName;
 
     public Users() {
     }
 
-    public Users(String ad, String soyAd, String id) {
-        this.ad = ad;
-        this.soyAd = soyAd;
+    public Users(String id, String firstName, String lastName) {
         this.id = id;
-    }
-
-    public String getAd() {
-        return ad;
-    }
-
-    public void setAd(String ad) {
-        this.ad = ad;
-    }
-
-    public String getSoyAd() {
-        return soyAd;
-    }
-
-    public void setSoyAd(String soyAd) {
-        this.soyAd = soyAd;
+        FirstName = firstName;
+        LastName = lastName;
     }
 
     public String getId() {
@@ -39,10 +23,20 @@ public abstract class Users {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "ad='" + ad + '\'' +
-                ", soyAd='" + soyAd + '\'' +
-                ", id='" + id + '\'';
+    public String getFirstName() {
+        return FirstName;
     }
+
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
 }
