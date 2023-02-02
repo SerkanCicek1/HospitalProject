@@ -8,6 +8,8 @@ public class Branches {
     private int id;
     private String branch;
 
+    public List<Branches> branchesList = new ArrayList<>();
+
     private List<Doctors> doctorsList=new ArrayList<>();
 
     public Branches() {
@@ -50,4 +52,6 @@ public class Branches {
                         ", branch='" + branch + '\'' +
                         ", doctorsList=" + doctorsList ;
     }
+    
+
 }
