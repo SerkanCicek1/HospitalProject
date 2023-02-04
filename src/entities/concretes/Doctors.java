@@ -2,11 +2,16 @@ package entities.concretes;
 
 import entities.abstracts.Users;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Doctors extends Users {
 
     private Titles title;
     private Branches branch;
     private DoctorSituation doctorSituation;
+
+    public static List<Doctors> doctorsList = new ArrayList<>();
 
     public Doctors() {
 
@@ -52,8 +57,54 @@ public class Doctors extends Users {
     @Override
     public String toString() {
         return
-                "title=" + title +
-                        ", branch=" + branch +
-                        ", doctorSituation=" + doctorSituation;
+                "id=" + super.getId() +
+                        ",adi=" + super.getFirstName() +
+                        ",soyadi=" + super.getLastName() +
+                        ",ünvani=" + title +
+                        ", adi=" + super.getFirstName() +
+                        ", soyadi=" + super.getLastName() +
+                        ", ünvani=" + title +
+                        ", bransi=" + branch +
+                        ", doktor durumu=" + doctorSituation;
     }
+
+    //Izinli,Ameliyatta,Müsait,Muayenede
+
+    public void fillDoctorList() {
+
+        Doctors doctor1 = new Doctors("DR500111", "Ayhan", "Kaya", Titles.getTitleById(10), Branches.getBranchById(101), DoctorSituation.getDoctorSituationById(22));
+        Doctors doctor2 = new Doctors("DR501222", "Selma", "Can", Titles.getTitleById(10), Branches.getBranchById(102), DoctorSituation.getDoctorSituationById(22));
+        Doctors doctor3 = new Doctors("DR502333", "Kerim", "Atilgan", Titles.getTitleById(11), Branches.getBranchById(103), DoctorSituation.getDoctorSituationById(22));
+        Doctors doctor4 = new Doctors("DR503444", "Selim", "Uygun", Titles.getTitleById(12), Branches.getBranchById(104), DoctorSituation.getDoctorSituationById(23));
+        Doctors doctor5 = new Doctors("DR504555", "Fatma", "Tasdemir", Titles.getTitleById(13), Branches.getBranchById(100), DoctorSituation.getDoctorSituationById(21));
+        Doctors doctor6 = new Doctors("DR504556", "Kaya", "Tas", Titles.getTitleById(13), Branches.getBranchById(102), DoctorSituation.getDoctorSituationById(20));
+        doctorsList.add(doctor1);
+        doctorsList.add(doctor2);
+        doctorsList.add(doctor3);
+        doctorsList.add(doctor4);
+        doctorsList.add(doctor5);
+        doctorsList.add(doctor6);
+    }
+
+    @Override
+    public void showUsers() {
+        System.out.println();
+        System.out.println("////////////////////////////////////// DOKTOR LISTESI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
+        System.out.printf("%-13s  %-15s  %-15s  %-17s  %-15s  %-12s \n", "Doktor Kodu", "Doktor Ad", "Doktor Soyad", "Ünvan", "Brans", "Doktor Durum");
+        System.out.printf("%-13s  %-15s  %-15s  %-17s  %-15s  %-12s \n", "------------", "-------------", "-------------", "-----------------", "---------------", "-----------");
+        for (Doctors w : doctorsList) {
+            System.out.printf("%-13s  %-15s  %-15s  %-17s  %-15s  %-12s \n", w.getId(), w.getFirstName(), w.getLastName(), w.getTitle(), w.getBranch(), w.getDoctorSituation());
+        }
+        System.out.println();
+    }
+
+    public static Doctors getDoctorById(String id){
+        for (Doctors w:doctorsList){
+            if (w.getId().equals(id)){
+                return w;
+            }
+        }
+        return null;
+    }
+
 }
